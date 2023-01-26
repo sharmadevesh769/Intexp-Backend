@@ -6,6 +6,7 @@ import userRoutes from './routes/userRoutes.js'
 import expRoutes from './routes/expRoutes.js'
 import resRoutes from './routes/resRoute.js'
 import cors from 'cors'
+const PORT=process.env.port||8000
 dotenv.config()
 app.use(cors())
 app.use(express.json())
@@ -15,7 +16,7 @@ app.use('/api',expRoutes)
 app.use('/api',resRoutes)
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.DB_URL).then(
-    app.listen(8000, () => {
+    app.listen(PORT, () => {
         console.log("Server Connected on 8000")
     })
 ).catch((err) => {
